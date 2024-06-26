@@ -1,7 +1,7 @@
 import { Datafeed } from '@whatchangedfor-2/datafeed-api';
 
 export function parsePatch(version: string): string {
-  const patchnotes = Datafeed.patch(version);
+  // const patchnotes = Datafeed.patch(version);
 
   // Go through hero changes
 
