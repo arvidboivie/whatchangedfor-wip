@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@whatchangedfor-2/parse-patch": [
+        "libs/parser/feature/parse-patch/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
