@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@whatchangedfor-2/datafeed-api": [
+        "libs/parser/data-access/datafeed-api/src/index.ts"
+      ],
       "@whatchangedfor-2/parse-patch": [
         "libs/parser/feature/parse-patch/src/index.ts"
       ]
