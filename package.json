@@ -5,6 +5,7 @@
   "private": true,
   "devDependencies": {
     "@nx/js": "19.3.2",
+    "@nx/node": "19.3.2",
     "@nx/workspace": "19.3.2",
     "nx": "19.3.2"
   },
