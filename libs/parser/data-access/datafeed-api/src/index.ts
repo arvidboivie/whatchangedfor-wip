@@ -1,1 +1,1 @@
-export * from './lib/datafeed-api';
+export * from './lib/datafeed';
