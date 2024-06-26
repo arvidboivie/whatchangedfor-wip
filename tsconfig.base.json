@@ -20,6 +20,9 @@
       ],
       "@whatchangedfor-2/parse-patch": [
         "libs/parser/feature/parse-patch/src/index.ts"
+      ],
+      "@whatchangedfor-2/parser-main": [
+        "libs/parser/feature/parser-main/src/index.ts"
       ]
     }
   },
