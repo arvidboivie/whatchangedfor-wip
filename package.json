@@ -30,7 +30,7 @@
     "ts-node": "10.9.1",
     "typescript": "~5.4.2"
   },
-  "packageManager": "yarn@3.6.3",
+  "packageManager": "yarn@4.3.1",
   "dependencies": {
     "tslib": "^2.3.0"
   }
