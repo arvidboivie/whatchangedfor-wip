@@ -1,7 +1,7 @@
 import { PatchInfo } from '@whatchangedfor-2/datafeed';
-import { Patches } from './patches.interface';
+import { PatchesResponse } from './patches.interface';
 
-export function transformPatches(patches: Patches): PatchInfo[] {
+export function transformPatches(patches: PatchesResponse): PatchInfo[] {
   return patches.patches.map(
     (patch): PatchInfo => ({
       version: patch.patch_number,

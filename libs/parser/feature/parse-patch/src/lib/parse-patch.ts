@@ -1,7 +1,9 @@
 import { Datafeed } from '@whatchangedfor-2/datafeed-api';
 
-export function parsePatch(version: string): string {
-  // const patchnotes = Datafeed.patch(version);
+export async function parsePatch(version: string): Promise<string> {
+  const patchnotes = await Datafeed.patch(version);
+
+  console.log(JSON.stringify(patchnotes));
 
   // Go through hero changes
 

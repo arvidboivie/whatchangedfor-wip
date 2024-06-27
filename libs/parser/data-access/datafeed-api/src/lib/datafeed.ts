@@ -1,6 +1,6 @@
 import { PatchInfo } from '@whatchangedfor-2/datafeed';
-import { isPatches } from './interfaces/patches.typeguard';
-import { transformPatches } from './interfaces/patches.transformer';
+import { isPatches } from './types/patches.typeguard';
+import { transformPatches } from './types/patches.transformer';
 
 export class Datafeed {
   private static readonly BASE_URL = `https://www.dota2.com/datafeed`;
@@ -14,21 +14,33 @@ export class Datafeed {
     return transformPatches(patches);
   }
 
-  // public static async heroes(): Promise<any> {
-  //   return this.getData('herolist?language=english');
-  // }
+  public static async heroes(): Promise<any> {
+    return this.getData(
+      'herolist?language=english',
+      (input: unknown): input is any => true
+    );
+  }
 
-  // public static async items(): Promise<any> {
-  //   return this.getData('itemlist?language=english');
-  // }
+  public static async items(): Promise<any> {
+    return this.getData(
+      'itemlist?language=english',
+      (input: unknown): input is any => true
+    );
+  }
 
-  // public static async abilities(): Promise<any> {
-  //   return this.getData('abilitylist?language=english');
-  // }
+  public static async abilities(): Promise<any> {
+    return this.getData(
+      'abilitylist?language=english',
+      (input: unknown): input is any => true
+    );
+  }
 
-  // public static async patch(version: string): Promise<any> {
-  //   return this.getData(`patchnotes?version=${version}&language=english`);
-  // }
+  public static async patch(version: string): Promise<any> {
+    return this.getData(
+      `patchnotes?version=${version}&language=english`,
+      (input: unknown): input is any => true
+    );
+  }
 
   private static async getData<T>(
     resource: string,
