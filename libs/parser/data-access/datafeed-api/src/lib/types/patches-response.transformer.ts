@@ -1,5 +1,5 @@
 import { PatchInfo } from '@whatchangedfor-2/datafeed';
-import { PatchesResponse } from './patches.interface';
+import { PatchesResponse } from './patches-response.interface';
 
 export function transformPatches(patches: PatchesResponse): PatchInfo[] {
   return patches.patches.map(

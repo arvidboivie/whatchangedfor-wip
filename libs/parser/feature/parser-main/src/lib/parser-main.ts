@@ -11,5 +11,9 @@ export async function parserMain(): Promise<string> {
   // loop through patches
   const changeset = patches.map(({ version }) => parsePatch(version));
 
+  await Promise.all(changeset);
+
+  console.log(changeset);
+
   return 'parser-main';
 }

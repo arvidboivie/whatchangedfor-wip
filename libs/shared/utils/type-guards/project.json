@@ -1,0 +1,9 @@
+{
+  "name": "type-guards",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/utils/type-guards/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project type-guards --web",
+  "targets": {}
+}

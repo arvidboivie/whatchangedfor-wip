@@ -1,6 +1,7 @@
 import { PatchInfo } from '@whatchangedfor-2/datafeed';
-import { isPatches } from './types/patches.typeguard';
-import { transformPatches } from './types/patches.transformer';
+import { isPatchesResponse } from './types/patches-response.typeguard';
+import { transformPatches } from './types/patches-response.transformer';
+import { isPatchResponse } from './types/patch-response.typeguard';
 
 export class Datafeed {
   private static readonly BASE_URL = `https://www.dota2.com/datafeed`;
@@ -8,7 +9,7 @@ export class Datafeed {
   public static async patches(): Promise<PatchInfo[]> {
     const patches = await this.getData(
       'patchnoteslist?language=english',
-      isPatches
+      isPatchesResponse
     );
 
     return transformPatches(patches);
@@ -38,7 +39,7 @@ export class Datafeed {
   public static async patch(version: string): Promise<any> {
     return this.getData(
       `patchnotes?version=${version}&language=english`,
-      (input: unknown): input is any => true
+      isPatchResponse
     );
   }
 
@@ -49,6 +50,7 @@ export class Datafeed {
     const results = await this.makeFetchHappen(resource);
 
     if (!guard(results)) {
+      console.log(JSON.stringify(results));
       throw new Error(`Invalid response from ${resource}`);
     }
 
