@@ -11,50 +11,55 @@ import {
   isObject,
   isString,
   optional,
+  optionalProperty,
   property,
 } from '@whatchangedfor-2/type-guards';
 
 export function isPatchResponse(input: unknown): input is PatchResponse {
   return (
     isObject(input) &&
-    property(isString)(input, 'patch_number') &&
-    property(isNumber)(input, 'patch_timestamp') &&
-    optional(property(arrayOf(isNote)))(input, 'generic') &&
-    optional(property(arrayOf(isAbilityChanges)))(input, 'items') &&
-    optional(property(arrayOf(isAbilityChanges)))(input, 'neutral_items') &&
-    optional(property(arrayOf(isHeroChanges)))(input, 'heroes')
+    property('patch_number', isString)(input) &&
+    property('patch_timestamp', isNumber)(input) &&
+    optionalProperty('generic', arrayOf(isNote))(input) &&
+    optionalProperty('items', arrayOf(isAbilityChanges))(input) &&
+    optionalProperty('neutral_items', arrayOf(isAbilityChanges))(input) &&
+    optionalProperty('heroes', arrayOf(isHeroChanges))(input)
   );
 }
 
 function isHeroChanges(input: unknown): input is HeroChanges {
-  return (
+  if (
     isObject(input) &&
-    property(isNumber)(input, 'hero_id') &&
-    optional(property(arrayOf(isSubsection)))(input, 'subsections') &&
-    optional(property(arrayOf(isNote)))(input, 'hero_notes') &&
-    optional(property(arrayOf(isNote)))(input, 'talent_notes') &&
-    optional(property(arrayOf(isAbilityChanges)))(input, 'abilities')
-  );
+    property('hero_id', isNumber)(input) &&
+    property('subsections', arrayOf(isSubsection))(input) &&
+    optionalProperty('hero_notes', arrayOf(isNote))(input) &&
+    optionalProperty('talent_notes', arrayOf(isNote))(input) &&
+    optionalProperty('abilities', arrayOf(isAbilityChanges))(input)
+  ) {
+    input;
+
+    return true;
+  }
 }
 
 function isSubsection(input: unknown): input is Subsection {
   return (
     isObject(input) &&
-    property(isString)(input, 'title') &&
-    property(isString)(input, 'style') &&
-    optional(property(arrayOf(isAbilityChanges)))(input, 'abilities') &&
-    optional(property(arrayOf(isNote)))(input, 'general_notes')
+    property('title', isString)(input) &&
+    property('style', isString)(input) &&
+    optionalProperty('abilities', arrayOf(isAbilityChanges))(input) &&
+    optionalProperty('general_notes', arrayOf(isNote))(input)
   );
 }
 
 function isAbilityChanges(input: unknown): input is AbilityChanges {
   return (
     isObject(input) &&
-    property(isNumber)(input, 'ability_id') &&
-    property(arrayOf(isNote))(input, 'ability_notes')
+    property('ability_id', isNumber)(input) &&
+    property('ability_notes', arrayOf(isNote))(input)
   );
 }
 
 function isNote(input: unknown): input is Note {
-  return isObject(input) && property(isString)(input, 'note');
+  return isObject(input) && property('note', isString)(input);
 }
