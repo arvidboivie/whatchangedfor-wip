@@ -10,7 +10,6 @@ import {
   isNumber,
   isObject,
   isString,
-  optional,
   optionalProperty,
   property,
 } from '@whatchangedfor-2/type-guards';
@@ -28,18 +27,14 @@ export function isPatchResponse(input: unknown): input is PatchResponse {
 }
 
 function isHeroChanges(input: unknown): input is HeroChanges {
-  if (
+  return (
     isObject(input) &&
     property('hero_id', isNumber)(input) &&
-    property('subsections', arrayOf(isSubsection))(input) &&
+    optionalProperty('subsections', arrayOf(isSubsection))(input) &&
     optionalProperty('hero_notes', arrayOf(isNote))(input) &&
     optionalProperty('talent_notes', arrayOf(isNote))(input) &&
     optionalProperty('abilities', arrayOf(isAbilityChanges))(input)
-  ) {
-    input;
-
-    return true;
-  }
+  );
 }
 
 function isSubsection(input: unknown): input is Subsection {

@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@whatchangedfor-2/changeset": [
+        "libs/parser/models/changeset/src/index.ts"
+      ],
       "@whatchangedfor-2/datafeed": [
         "libs/parser/models/datafeed/src/index.ts"
       ],

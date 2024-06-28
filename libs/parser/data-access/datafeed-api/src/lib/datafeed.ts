@@ -1,4 +1,4 @@
-import { PatchInfo } from '@whatchangedfor-2/datafeed';
+import { PatchListItem } from '@whatchangedfor-2/datafeed';
 import { isPatchesResponse } from './types/patches-response.typeguard';
 import { transformPatches } from './types/patches-response.transformer';
 import { isPatchResponse } from './types/patch-response.typeguard';
@@ -6,7 +6,7 @@ import { isPatchResponse } from './types/patch-response.typeguard';
 export class Datafeed {
   private static readonly BASE_URL = `https://www.dota2.com/datafeed`;
 
-  public static async patches(): Promise<PatchInfo[]> {
+  public static async patches(): Promise<string[]> {
     const patches = await this.getData(
       'patchnoteslist?language=english',
       isPatchesResponse

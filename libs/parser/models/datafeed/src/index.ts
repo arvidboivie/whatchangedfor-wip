@@ -1,1 +1,1 @@
-export * from './lib/patch-info';
+export * from './lib/patch';

@@ -1,20 +1,25 @@
 import {
-  hasArrayProperty,
-  hasNumberProperty,
-  hasStringProperty,
+  arrayOf,
+  isNumber,
   isObject,
+  isString,
+  property,
 } from '@whatchangedfor-2/type-guards';
 import { PatchesResponse } from './patches-response.interface';
 
 export function isPatchesResponse(input: unknown): input is PatchesResponse {
   return (
     isObject(input) &&
-    hasArrayProperty(input, 'patches') &&
-    input.patches.every(
-      (patch: unknown) =>
-        isObject(patch) &&
-        hasStringProperty(patch, 'patch_number') &&
-        hasNumberProperty(patch, 'patch_timestamp')
+    property(
+      'patches',
+      arrayOf(
+        (
+          input: unknown
+        ): input is { patch_number: string; patch_timestamp: number } =>
+          isObject(input) &&
+          property('patch_number', isString)(input) &&
+          property('patch_timestamp', isNumber)(input)
+      )
     )
-  );
+  )(input);
 }
