@@ -1,21 +1,12 @@
-import { PropertyGuard } from './interfaces/property-guard';
+import { PropertyTypeguard } from './type-guard';
 
-// export function optional<T>(
-//   guard: PropertyGuard<T>,
-//   property: string
-// ): (input: unknown) => input is T {
-//   return (input): input is T => guard(input, property) || true;
-// }
-
-export function optional<T>(
-  guard: PropertyGuard<T>,
-  property: string
-): (input: unknown) => input is Partial<T> {
-  return (input): input is Partial<T> => guard(input, property) || true;
+export function optional<Type, Property extends string>(
+  propertyGuard: PropertyTypeguard<Type, Property>
+): PropertyTypeguard<Type, Property> {
+  return (
+    input: Record<string, unknown>,
+    property: Property
+  ): input is Record<string, unknown> & { [P in Property]: Type } => {
+    return !(property in input) || propertyGuard(input, property);
+  };
 }
-
-// optional(target(unknown, 'property'), isNumber)
-// required(target(unknown, 'property'), isNumber)
-
-// optional(isNumber('property'))(unknown)
-// optionalProperty(property, isNumber)(unknown)
