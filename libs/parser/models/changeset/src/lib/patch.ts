@@ -1,9 +1,9 @@
-export interface Patch {
+export interface PatchChangeset {
   version: string;
   timestamp: Date;
   generalChanges: string[];
   heroChanges: HeroChangeset[];
-  itemChanges: ItemChangeset[];
+  itemChanges: AbilityChangeset[];
 }
 
 export interface HeroChangeset {
@@ -21,11 +21,6 @@ export interface FacetChangeset {
 }
 
 export interface AbilityChangeset {
-  name: string;
-  changes: string[];
-}
-
-export interface ItemChangeset {
   name: string;
   changes: string[];
 }

@@ -9,7 +9,7 @@ export async function parserMain(): Promise<string> {
   console.log(patches);
 
   // loop through patches
-  const changeset = patches.map(({ version }) => parsePatch(version));
+  const changeset = patches.map((version) => parsePatch(version));
 
   await Promise.all(changeset);
 

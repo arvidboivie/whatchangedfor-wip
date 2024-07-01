@@ -2,6 +2,8 @@ import { isPatchesResponse } from './types/patches-response.typeguard';
 import { transformPatchesResponseToString } from './transformers/patches-response-to-string';
 import { isPatchResponse } from './types/patch-response.typeguard';
 import { PatchResponse } from './types/patch-response.interface';
+import { transformPatchResponseToPatchChangeset } from './transformers/patch-response-to-patch-changeset';
+import { PatchChangeset } from '@whatchangedfor-2/changeset';
 
 export class Datafeed {
   private static readonly BASE_URL = `https://www.dota2.com/datafeed`;
@@ -36,11 +38,13 @@ export class Datafeed {
     );
   }
 
-  public static async patch(version: string): Promise<PatchResponse> {
-    return this.getData(
+  public static async patch(version: string): Promise<PatchChangeset> {
+    const patchResponse = await this.getData(
       `patchnotes?version=${version}&language=english`,
       isPatchResponse
     );
+
+    return transformPatchResponseToPatchChangeset(patchResponse);
   }
 
   private static async getData<T>(
