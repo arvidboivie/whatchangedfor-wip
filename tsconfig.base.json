@@ -18,9 +18,6 @@
       "@whatchangedfor-2/changeset": [
         "libs/parser/models/changeset/src/index.ts"
       ],
-      "@whatchangedfor-2/datafeed": [
-        "libs/parser/models/datafeed/src/index.ts"
-      ],
       "@whatchangedfor-2/datafeed-api": [
         "libs/parser/data-access/datafeed-api/src/index.ts"
       ],

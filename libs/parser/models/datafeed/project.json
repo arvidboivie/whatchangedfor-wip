@@ -1,9 +1,0 @@
-{
-  "name": "datafeed",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/parser/models/datafeed/src",
-  "projectType": "library",
-  "tags": [],
-  "// targets": "to see all targets run: nx show project datafeed --web",
-  "targets": {}
-}

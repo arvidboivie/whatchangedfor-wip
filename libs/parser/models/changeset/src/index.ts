@@ -1,1 +1,1 @@
-export * from './lib/changeset';
+export * from './lib/patch';
