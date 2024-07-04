@@ -1,5 +1,5 @@
 import { Note } from '../types/patch-response.interface';
-import { transformNotes } from './transform-notes';
+import { transformNote } from './transform-notes';
 
 describe(`transformNotes`, () => {
   const exampleNotes: Note[] = [
@@ -12,17 +12,17 @@ describe(`transformNotes`, () => {
   ];
 
   it(`should transform notes`, () => {
-    expect(transformNotes(exampleNotes)).toEqual([
+    expect(transformNote(exampleNotes)).toEqual([
       'This is a note',
       'This is another note',
     ]);
   });
 
   it(`should return an empty array if no notes are provided`, () => {
-    expect(transformNotes([])).toEqual([]);
+    expect(transformNote([])).toEqual([]);
   });
 
   it(`should return an empty array if no notes are provided`, () => {
-    expect(transformNotes(undefined)).toEqual([]);
+    expect(transformNote(undefined)).toEqual([]);
   });
 });

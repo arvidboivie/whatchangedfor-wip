@@ -1,8 +1,8 @@
 import { PatchChangeset } from '@whatchangedfor-2/changeset';
 
-import { transformNotes } from './transform-notes';
+import { transformNote } from './transform-notes';
 import { PatchResponse } from '../types/patch-response.interface';
-import { transformAbilities } from './transform-abilities';
+import { transformAbility } from './transform-abilities';
 
 export function transformPatchResponseToPatchChangeset(
   patchResponse: PatchResponse
@@ -10,24 +10,24 @@ export function transformPatchResponseToPatchChangeset(
   const heroChanges =
     patchResponse.heroes?.map((hero) => ({
       name: `${hero.hero_id}`,
-      talents: transformNotes(hero.talent_notes),
-      notes: transformNotes(hero.hero_notes),
-      abilities: transformAbilities(hero.abilities),
+      talents: hero.talent_notes.map(transformNote),
+      notes: hero.hero_notes.map(transformNote),
+      abilities: hero.abilities?.map(transformAbility) ?? [],
       facets: hero.subsections?.map((subsection) => ({
         name: subsection.title,
-        changes: transformNotes(subsection.general_notes),
-        abilityChanges: transformAbilities(subsection.abilities),
+        changes: subsection.general_notes.map(transformNote),
+        abilityChanges: subsection.abilities?.map(transformAbility) ?? [],
       })),
     })) ?? [];
 
   const patch: PatchChangeset = {
     version: patchResponse.patch_number,
     timestamp: new Date(patchResponse.patch_timestamp * 1000),
-    generalChanges: transformNotes(patchResponse.generic),
+    generalChanges: patchResponse.generic.map(transformNote),
     heroChanges,
     itemChanges: [
-      ...transformAbilities(patchResponse.items),
-      ...transformAbilities(patchResponse.neutral_items),
+      ...(patchResponse.items?.map(transformAbility) ?? []),
+      ...(patchResponse.neutral_items?.map(transformAbility) ?? []),
     ],
   };
 

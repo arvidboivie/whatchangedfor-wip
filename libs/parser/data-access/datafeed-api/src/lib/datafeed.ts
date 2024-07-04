@@ -2,8 +2,11 @@ import { isPatchesResponse } from './types/patches-response.typeguard';
 import { transformPatchesResponseToString } from './transformers/patches-response-to-string';
 import { isPatchResponse } from './types/patch-response.typeguard';
 import { transformPatchResponseToPatchChangeset } from './transformers/patch-response-to-patch-changeset';
-import { PatchChangeset } from '@whatchangedfor-2/changeset';
+import { AbilityMap, PatchChangeset } from '@whatchangedfor-2/changeset';
 import { Typeguard } from 'libs/shared/utils/type-guards/src/lib/type-guard';
+import { isAbilityResponse } from './types/ability-response.typeguard';
+import { AbilityResponse } from './types/ability-response.interface';
+import { transformAbilityResponseToAbilityInfo } from './transformers/ability-response-to-ability-info';
 
 export class Datafeed {
   private static readonly BASE_URL = `https://www.dota2.com/datafeed`;
@@ -39,11 +42,13 @@ export class Datafeed {
     );
   }
 
-  public static async abilities(): Promise<any> {
-    return this.getCachedData(
+  public static async abilities(): Promise<AbilityMap> {
+    const abilityResponse = await this.getCachedData(
       'abilitylist?language=english',
-      (input: unknown): input is any => true
+      isAbilityResponse
     );
+
+    return transformAbilityResponseToAbilityInfo(abilityResponse);
   }
 
   public static async patch(version: string): Promise<PatchChangeset> {

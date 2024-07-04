@@ -5,15 +5,13 @@ export async function parserMain(): Promise<string> {
   // Get all patches
   const patches = await Datafeed.patches();
 
-  // -- skip this, lets do everything every time -- Get latest version patched
-  console.log(patches);
-
   // loop through patches
-  const changeset = patches.map((version) => parsePatch(version));
+  const changeset = await Promise.all(
+    patches.map((version) => parsePatch(version))
+  );
 
-  await Promise.all(changeset);
-
-  console.log(changeset);
+  changeset;
+  // console.log(changeset);
 
   return 'parser-main';
 }

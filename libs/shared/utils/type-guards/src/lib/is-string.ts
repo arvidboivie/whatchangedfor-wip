@@ -1,3 +1,3 @@
-export function isString(input: unknown): input is string {
+export function isString(input: unknown) {
   return typeof input === 'string';
 }
