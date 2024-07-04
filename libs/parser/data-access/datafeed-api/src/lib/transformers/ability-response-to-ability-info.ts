@@ -1,9 +1,9 @@
-import { AbilityInfo, AbilityMap } from '@whatchangedfor-2/changeset';
-import { AbilityResponse } from '../types/ability-response.interface';
+import { AbilityInfo, AbilityInfoMap } from '@whatchangedfor-2/changeset';
+import { AbilityDataResponse } from '../types/ability-data-response.interface';
 
 export function transformAbilityResponseToAbilityInfo(
-  input: AbilityResponse
-): AbilityMap {
+  input: AbilityDataResponse
+): AbilityInfoMap {
   return new Map(
     input.result.data.itemabilities.map((ability) => [
       ability.id,

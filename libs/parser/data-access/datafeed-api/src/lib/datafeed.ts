@@ -2,11 +2,17 @@ import { isPatchesResponse } from './types/patches-response.typeguard';
 import { transformPatchesResponseToString } from './transformers/patches-response-to-string';
 import { isPatchResponse } from './types/patch-response.typeguard';
 import { transformPatchResponseToPatchChangeset } from './transformers/patch-response-to-patch-changeset';
-import { AbilityMap, PatchChangeset } from '@whatchangedfor-2/changeset';
+import {
+  AbilityInfoMap,
+  HeroInfoMap,
+  PatchChangeset,
+} from '@whatchangedfor-2/changeset';
 import { Typeguard } from 'libs/shared/utils/type-guards/src/lib/type-guard';
-import { isAbilityResponse } from './types/ability-response.typeguard';
-import { AbilityResponse } from './types/ability-response.interface';
+import { isAbilityDataResponse } from './types/ability-response.typeguard';
+import { AbilityDataResponse } from './types/ability-data-response.interface';
 import { transformAbilityResponseToAbilityInfo } from './transformers/ability-response-to-ability-info';
+import { isHeroDataResponse } from './types/hero-data-response.typeguard';
+import { transformHeroDataResponseToHeroInfo } from './transformers/hero-response-to-hero-info';
 
 export class Datafeed {
   private static readonly BASE_URL = `https://www.dota2.com/datafeed`;
@@ -28,24 +34,28 @@ export class Datafeed {
     return transformPatchesResponseToString(patches);
   }
 
-  public static async heroes(): Promise<any> {
-    return this.getCachedData(
+  public static async heroes(): Promise<HeroInfoMap> {
+    const heroes = await this.getCachedData(
       'herolist?language=english',
-      (input: unknown): input is any => true
+      isHeroDataResponse
     );
+
+    return transformHeroDataResponseToHeroInfo(heroes);
   }
 
-  public static async items(): Promise<any> {
-    return this.getCachedData(
+  public static async items(): Promise<AbilityInfoMap> {
+    const itemResponse = await this.getCachedData(
       'itemlist?language=english',
-      (input: unknown): input is any => true
+      isAbilityDataResponse
     );
+
+    return transformAbilityResponseToAbilityInfo(itemResponse);
   }
 
-  public static async abilities(): Promise<AbilityMap> {
+  public static async abilities(): Promise<AbilityInfoMap> {
     const abilityResponse = await this.getCachedData(
       'abilitylist?language=english',
-      isAbilityResponse
+      isAbilityDataResponse
     );
 
     return transformAbilityResponseToAbilityInfo(abilityResponse);

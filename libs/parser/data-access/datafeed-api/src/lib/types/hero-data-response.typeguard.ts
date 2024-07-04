@@ -3,31 +3,27 @@ import {
   isNumber,
   isObject,
   isString,
-  optionalProperty,
   property,
 } from '@whatchangedfor-2/type-guards';
-import {
-  AbilityDataItem,
-  AbilityDataResponse,
-} from './ability-data-response.interface';
+import { HeroDataItem, HeroDataResponse } from './hero-data-response.interface';
 
-export function isAbilityDataResponse(
-  input: unknown
-): input is AbilityDataResponse {
+export function isHeroDataResponse(input: unknown): input is HeroDataResponse {
   return (
     isObject(input) &&
     property('result', isObject)(input) &&
     property('data', isObject)(input.result) &&
-    property('itemabilities', arrayOf(isAbilityDataItem))(input.result.data)
+    property('heroes', arrayOf(isHeroDataItem))(input.result.data)
   );
 }
 
-function isAbilityDataItem(input: unknown): input is AbilityDataItem {
+function isHeroDataItem(input: unknown): input is HeroDataItem {
   return (
+    isObject(input) &&
     property('id', isNumber)(input) &&
     property('name', isString)(input) &&
     property('name_loc', isString)(input) &&
     property('name_english_loc', isString)(input) &&
-    optionalProperty('neutral_item_tier', isNumber)(input)
+    property('primary_attr', isNumber)(input) &&
+    property('complexity', isNumber)(input)
   );
 }

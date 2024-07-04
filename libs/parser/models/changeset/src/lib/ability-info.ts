@@ -4,4 +4,4 @@ export interface AbilityInfo {
   technicalName: string;
 }
 
-export type AbilityMap = Map<number, AbilityInfo>;
+export type AbilityInfoMap = Map<number, AbilityInfo>;

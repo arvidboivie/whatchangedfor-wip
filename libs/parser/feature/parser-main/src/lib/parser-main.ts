@@ -10,8 +10,5 @@ export async function parserMain(): Promise<string> {
     patches.map((version) => parsePatch(version))
   );
 
-  changeset;
-  // console.log(changeset);
-
   return 'parser-main';
 }
