@@ -1,17 +1,21 @@
-import { isPatchesResponse } from './types/patches-response.typeguard';
-import { transformPatchesResponseToString } from './transformers/patches-response-to-string';
-import { isPatchResponse } from './types/patch-response.typeguard';
-import { transformPatchResponseToPatchChangeset } from './transformers/patch-response-to-patch-changeset';
 import {
   AbilityInfoMap,
   Change,
   HeroInfoMap,
 } from '@whatchangedfor-2/changeset';
-import { Typeguard } from 'libs/shared/utils/type-guards/src/lib/type-guard';
-import { isAbilityDataResponse } from './types/ability-response.typeguard';
-import { transformAbilityResponseToAbilityInfo } from './transformers/ability-response-to-ability-info';
-import { isHeroDataResponse } from './types/hero-data-response.typeguard';
-import { transformHeroDataResponseToHeroInfo } from './transformers/hero-response-to-hero-info';
+import {
+  isPatchesResponse,
+  isHeroDataResponse,
+  isAbilityDataResponse,
+  isPatchResponse,
+} from './type-guards';
+import {
+  transformPatchesResponseToString,
+  transformHeroDataResponseToHeroInfo,
+  transformAbilityResponseToAbilityInfo,
+  transformPatchResponseToPatchChangeset,
+} from './transformers';
+import { Typeguard } from '@whatchangedfor-2/type-guards';
 
 export class Datafeed {
   private static readonly BASE_URL = `https://www.dota2.com/datafeed`;

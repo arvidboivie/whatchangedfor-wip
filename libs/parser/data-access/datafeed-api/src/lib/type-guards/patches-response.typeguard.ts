@@ -5,7 +5,7 @@ import {
   isString,
   property,
 } from '@whatchangedfor-2/type-guards';
-import { PatchesResponse } from './patches-response.interface';
+import { PatchesResponse } from '../types/patches-response.interface';
 
 export function isPatchesResponse(input: unknown): input is PatchesResponse {
   return (

@@ -1,4 +1,5 @@
-import { AbilityChangeset, FacetChangeset } from './patch';
+import { AbilityChangeset } from './ability';
+import { FacetChangeset } from './facet';
 
 export interface Change {
   patch: string;

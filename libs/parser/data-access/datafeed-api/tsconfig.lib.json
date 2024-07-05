@@ -11,8 +11,8 @@
     "src/**/*.ts",
     "../../utils/data-transformers/src/lib/patches-response.ts",
     "src/lib/types/patch-response.interface.ts",
-    "src/lib/types/patch-response.typeguard.ts",
+    "src/lib/type-guards/patch-response.typeguard.ts",
     "src/lib/types/patches-response.interface.ts",
-    "src/lib/types/patches-response.typeguard.ts"
+    "src/lib/type-guards/patches-response.typeguard.ts"
   ]
 }

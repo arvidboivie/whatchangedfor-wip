@@ -4,7 +4,7 @@ import {
   Note,
   PatchResponse,
   Subsection,
-} from './patch-response.interface';
+} from '../types/patch-response.interface';
 import {
   arrayOf,
   isNumber,
