@@ -5,6 +5,6 @@ import { transformNote } from './transform-notes';
 export const transformAbility = (
   ability: AbilityChanges
 ): AbilityChangeset => ({
-  name: `${ability.ability_id}`,
+  id: ability.ability_id,
   changes: ability.ability_notes.map(transformNote),
 });

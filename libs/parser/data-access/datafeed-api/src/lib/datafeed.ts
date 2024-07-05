@@ -9,7 +9,6 @@ import {
 } from '@whatchangedfor-2/changeset';
 import { Typeguard } from 'libs/shared/utils/type-guards/src/lib/type-guard';
 import { isAbilityDataResponse } from './types/ability-response.typeguard';
-import { AbilityDataResponse } from './types/ability-data-response.interface';
 import { transformAbilityResponseToAbilityInfo } from './transformers/ability-response-to-ability-info';
 import { isHeroDataResponse } from './types/hero-data-response.typeguard';
 import { transformHeroDataResponseToHeroInfo } from './transformers/hero-response-to-hero-info';

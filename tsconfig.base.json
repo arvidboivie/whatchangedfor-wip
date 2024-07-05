@@ -27,6 +27,9 @@
       "@whatchangedfor-2/parser-main": [
         "libs/parser/feature/parser-main/src/index.ts"
       ],
+      "@whatchangedfor-2/parser/feature/hero-history": [
+        "libs/parser/feature/hero-history/src/index.ts"
+      ],
       "@whatchangedfor-2/type-guards": [
         "libs/shared/utils/type-guards/src/index.ts"
       ]

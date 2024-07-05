@@ -1,3 +1,3 @@
 # TODO
 
-1. Get names for abilities and heroes
+1. Turn patch changesets into change lists for each hero + item

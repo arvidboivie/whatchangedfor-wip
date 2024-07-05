@@ -9,7 +9,8 @@ export function transformPatchResponseToPatchChangeset(
 ): PatchChangeset {
   const heroChanges =
     patchResponse.heroes?.map((hero) => ({
-      name: `${hero.hero_id}`,
+      id: hero.hero_id,
+      type: `HERO` as const,
       talents: hero.talent_notes?.map(transformNote) ?? [],
       notes: hero.hero_notes?.map(transformNote) ?? [],
       abilities: hero.abilities?.map(transformAbility) ?? [],
@@ -24,10 +25,18 @@ export function transformPatchResponseToPatchChangeset(
     version: patchResponse.patch_number,
     timestamp: new Date(patchResponse.patch_timestamp * 1000),
     generalChanges: patchResponse.generic?.map(transformNote) ?? [],
-    heroChanges,
-    itemChanges: [
-      ...(patchResponse.items?.map(transformAbility) ?? []),
-      ...(patchResponse.neutral_items?.map(transformAbility) ?? []),
+    changes: [
+      ...heroChanges,
+      ...(patchResponse.items?.map((item) => ({
+        type: `ITEM` as const,
+        id: item.ability_id,
+        notes: item.ability_notes?.map(transformNote) ?? [],
+      })) ?? []),
+      ...(patchResponse.neutral_items?.map((item) => ({
+        type: `ITEM` as const,
+        id: item.ability_id,
+        notes: item.ability_notes?.map(transformNote) ?? [],
+      })) ?? []),
     ],
   };
 
