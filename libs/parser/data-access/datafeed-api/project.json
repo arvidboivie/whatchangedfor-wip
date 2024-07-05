@@ -1,5 +1,5 @@
 {
-  "name": "datafeed-api",
+  "name": "parser-data-access-datafeed-api",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/parser/data-access/datafeed-api/src",
   "projectType": "library",
