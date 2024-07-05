@@ -1,11 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: 'parse-patch',
+  displayName: 'parser-feature-dota-data',
   preset: '../../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../../coverage/libs/parser/feature/parse-patch',
+  coverageDirectory: '../../../../coverage/libs/parser/feature/dota-data',
 };

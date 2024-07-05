@@ -4,8 +4,8 @@ import { isPatchResponse } from './types/patch-response.typeguard';
 import { transformPatchResponseToPatchChangeset } from './transformers/patch-response-to-patch-changeset';
 import {
   AbilityInfoMap,
+  Change,
   HeroInfoMap,
-  PatchChangeset,
 } from '@whatchangedfor-2/changeset';
 import { Typeguard } from 'libs/shared/utils/type-guards/src/lib/type-guard';
 import { isAbilityDataResponse } from './types/ability-response.typeguard';
@@ -60,7 +60,7 @@ export class Datafeed {
     return transformAbilityResponseToAbilityInfo(abilityResponse);
   }
 
-  public static async patch(version: string): Promise<PatchChangeset> {
+  public static async patch(version: string): Promise<Change[]> {
     const patchResponse = await this.getCachedData(
       `patchnotes?version=${version}&language=english`,
       isPatchResponse

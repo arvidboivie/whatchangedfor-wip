@@ -1,4 +1,4 @@
-import { AbilityChangeset, FacetChangeset } from '@whatchangedfor-2/changeset';
+import { AbilityChangeset, FacetChangeset } from './patch';
 
 export interface Change {
   patch: string;
