@@ -2,9 +2,10 @@
 import { defineConfig } from 'vite';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import solidPlugin from 'vite-plugin-solid';
 
 export default defineConfig({
-  root: __dirname,
+  // root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/web',
 
   server: {
@@ -17,7 +18,7 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [nxViteTsPaths()],
+  plugins: [nxViteTsPaths(), solidPlugin()],
 
   // Uncomment this if you are using workers.
   // worker: {

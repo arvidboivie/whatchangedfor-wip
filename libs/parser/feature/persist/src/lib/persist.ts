@@ -37,9 +37,10 @@ export const persist = (
     return path;
   });
 
-  const index = changeArray.map(([key]) => ({
+  const index = changeArray.map(([key, value]) => ({
     name: key,
     slug: slugify(key),
+    type: value[0].type,
   }));
 
   try {
@@ -51,5 +52,5 @@ export const persist = (
     console.error(err);
   }
 
-  return index.map(({ name, slug }) => `${name}: ${slug}`);
+  return index.map(({ name, slug, type }) => `${name}: ${slug} - ${type}`);
 };
