@@ -1,4 +1,7 @@
-import { AbilityChangeset, AbilityInfoMap } from '@whatchangedfor-2/changeset';
+import {
+  AbilityChangeset,
+  AbilityInfoMap,
+} from '@whatchangedfor-2/shared-models-changeset';
 
 import { transformNote } from './transform-notes';
 import { AbilityChanges } from '@whatchangedfor-2/parser/models/datafeed';

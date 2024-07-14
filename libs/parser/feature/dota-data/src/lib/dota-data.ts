@@ -2,7 +2,7 @@ import {
   AbilityInfoMap,
   Change,
   HeroInfoMap,
-} from '@whatchangedfor-2/changeset';
+} from '@whatchangedfor-2/shared-models-changeset';
 import { Datafeed } from '@whatchangedfor-2/parser/data-access/datafeed-api';
 import {
   createAbilityTransformer,

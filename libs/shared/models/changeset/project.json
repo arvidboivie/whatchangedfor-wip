@@ -1,0 +1,9 @@
+{
+  "name": "shared-models-changeset",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/models/changeset/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project shared-models-changeset --web",
+  "targets": {}
+}

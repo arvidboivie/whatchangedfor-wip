@@ -1,0 +1,9 @@
+{
+  "name": "web-data-access-fetch-json",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/data-access/fetch-json/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project web-data-access-fetch-json --web",
+  "targets": {}
+}

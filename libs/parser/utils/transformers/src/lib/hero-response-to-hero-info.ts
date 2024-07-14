@@ -1,4 +1,8 @@
-import { HeroInfoMap, HeroInfo, Attribute } from '@whatchangedfor-2/changeset';
+import {
+  HeroInfoMap,
+  HeroInfo,
+  Attribute,
+} from '@whatchangedfor-2/shared-models-changeset';
 import { HeroDataResponse } from '@whatchangedfor-2/parser/models/datafeed';
 
 const attributeMap: Map<number, Attribute> = new Map([

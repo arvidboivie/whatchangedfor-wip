@@ -1,4 +1,4 @@
-import { Change } from '@whatchangedfor-2/changeset';
+import { Change } from '@whatchangedfor-2/shared-models-changeset';
 
 import { transformNote } from './transform-notes';
 
@@ -28,13 +28,15 @@ export function transformPatchResponseToChanges(
   const itemChanges: Change[] = [
     ...(patchResponse.items ?? []),
     ...(patchResponse.neutral_items ?? []),
-  ].map((item) => ({
-    patch: patchResponse.patch_number,
-    patchDate: new Date(patchResponse.patch_timestamp * 1000),
-    id: item.ability_id,
-    type: `ITEM` as const,
-    notes: item.ability_notes?.map(transformNote) ?? [],
-  }));
+  ].map(
+    (item): Change => ({
+      patch: patchResponse.patch_number,
+      patchDate: new Date(patchResponse.patch_timestamp * 1000),
+      id: item.ability_id,
+      type: `ITEM` as const,
+      general: item.ability_notes?.map(transformNote) ?? [],
+    })
+  );
 
   return [...heroChanges, ...itemChanges];
 }

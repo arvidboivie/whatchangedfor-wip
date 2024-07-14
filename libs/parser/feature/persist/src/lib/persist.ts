@@ -1,4 +1,4 @@
-import { Change } from '@whatchangedfor-2/changeset';
+import { Change, DataIndex } from '@whatchangedfor-2/shared-models-changeset';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { slugify } from './utils/slugify';
 
@@ -37,7 +37,7 @@ export const persist = (
     return path;
   });
 
-  const index = changeArray.map(([key, value]) => ({
+  const index: DataIndex[] = changeArray.map(([key, value]) => ({
     name: key,
     slug: slugify(key),
     type: value[0].type,

@@ -1,4 +1,4 @@
-import { AbilityInfoMap } from '@whatchangedfor-2/changeset';
+import { AbilityInfoMap } from '@whatchangedfor-2/shared-models-changeset';
 import { AbilityDataResponse } from '@whatchangedfor-2/parser/models/datafeed';
 
 export function transformAbilityResponseToAbilityInfo(

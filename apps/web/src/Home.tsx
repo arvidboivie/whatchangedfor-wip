@@ -1,3 +1,5 @@
+import { DataIndex } from '@whatchangedfor-2/shared-models-changeset';
+import { fetchJson } from '@whatchangedfor-2/web/data-access/fetch-json';
 import {
   createResource,
   For,
@@ -7,14 +9,8 @@ import {
   type Component,
 } from 'solid-js';
 
-const fetchData = async () => {
-  const response = await fetch('http://127.0.0.1:5500/files/index.json');
-  const data = await response.json();
-  return data;
-};
-
 const Home: Component = () => {
-  const [data] = createResource(fetchData);
+  const [data] = createResource('index', fetchJson<DataIndex[]>);
 
   return (
     <div>
@@ -23,14 +19,15 @@ const Home: Component = () => {
       </Show>
       <Switch>
         <Match when={data.error}>
-          <span>Error: {error()}</span>
+          <span>Unable to load data</span>
         </Match>
         <Match when={data()}>
           <For each={data()} fallback={<div>Loading list...</div>}>
             {(item) => (
               <div>
                 <p>
-                  {item.type} - <b>{item.name}:</b> {item.slug}
+                  <a href={`/${item.slug}`}>{item.name}:</a> -{' '}
+                  <i>{item.type}</i>
                 </p>
               </div>
             )}

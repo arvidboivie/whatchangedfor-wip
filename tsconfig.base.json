@@ -16,9 +16,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@whatchangedfor-2/changeset": [
-        "libs/parser/models/changeset/src/index.ts"
-      ],
       "@whatchangedfor-2/parser/data-access/datafeed-api": [
         "libs/parser/data-access/datafeed-api/src/index.ts"
       ],
@@ -34,8 +31,14 @@
       "@whatchangedfor-2/parser/utils/transformers": [
         "libs/parser/utils/transformers/src/index.ts"
       ],
+      "@whatchangedfor-2/shared-models-changeset": [
+        "libs/shared/models/changeset/src/index.ts"
+      ],
       "@whatchangedfor-2/type-guards": [
         "libs/shared/utils/type-guards/src/index.ts"
+      ],
+      "@whatchangedfor-2/web/data-access/fetch-json": [
+        "libs/web/data-access/fetch-json/src/index.ts"
       ]
     }
   },
