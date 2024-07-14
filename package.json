@@ -10,6 +10,7 @@
     "@nx/jest": "19.3.2",
     "@nx/js": "19.3.2",
     "@nx/node": "19.3.2",
+    "@nx/web": "19.3.2",
     "@nx/workspace": "19.3.2",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
