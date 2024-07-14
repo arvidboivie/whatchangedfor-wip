@@ -1,0 +1,9 @@
+{
+  "name": "parser-feature-persist",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/parser/feature/persist/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project parser-feature-persist --web",
+  "targets": {}
+}

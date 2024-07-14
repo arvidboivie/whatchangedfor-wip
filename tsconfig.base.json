@@ -25,6 +25,9 @@
       "@whatchangedfor-2/parser/feature/dota-data": [
         "libs/parser/feature/dota-data/src/index.ts"
       ],
+      "@whatchangedfor-2/parser/feature/persist": [
+        "libs/parser/feature/persist/src/index.ts"
+      ],
       "@whatchangedfor-2/parser/models/datafeed": [
         "libs/parser/models/datafeed/src/index.ts"
       ],

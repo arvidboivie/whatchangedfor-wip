@@ -1,4 +1,5 @@
 import { DotaData } from '@whatchangedfor-2/parser/feature/dota-data';
+import { persist } from '@whatchangedfor-2/parser/feature/persist';
 
 console.log('Hello World');
 
@@ -7,7 +8,7 @@ async function parse() {
 
   const changes = await data.changes();
 
-  console.log(JSON.stringify(changes.get(`Snapfire`)));
+  console.log(persist(changes, 'files'));
 }
 
 parse();
