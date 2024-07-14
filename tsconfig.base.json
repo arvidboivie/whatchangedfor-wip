@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
+    "strict": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -23,6 +24,12 @@
       ],
       "@whatchangedfor-2/parser/feature/dota-data": [
         "libs/parser/feature/dota-data/src/index.ts"
+      ],
+      "@whatchangedfor-2/parser/models/datafeed": [
+        "libs/parser/models/datafeed/src/index.ts"
+      ],
+      "@whatchangedfor-2/parser/utils/transformers": [
+        "libs/parser/utils/transformers/src/index.ts"
       ],
       "@whatchangedfor-2/type-guards": [
         "libs/shared/utils/type-guards/src/index.ts"

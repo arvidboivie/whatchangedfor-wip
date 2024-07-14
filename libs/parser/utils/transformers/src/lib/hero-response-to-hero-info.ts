@@ -1,5 +1,5 @@
 import { HeroInfoMap, HeroInfo, Attribute } from '@whatchangedfor-2/changeset';
-import { HeroDataResponse } from '../types/hero-data-response.interface';
+import { HeroDataResponse } from '@whatchangedfor-2/parser/models/datafeed';
 
 const attributeMap: Map<number, Attribute> = new Map([
   [0, 'STRENGTH'],

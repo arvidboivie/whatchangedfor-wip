@@ -6,9 +6,9 @@ import {
   property,
 } from '@whatchangedfor-2/type-guards';
 import {
-  HeroDataItem,
   HeroDataResponse,
-} from '../types/hero-data-response.interface';
+  HeroDataItem,
+} from '../hero-data-response.interface';
 
 export function isHeroDataResponse(input: unknown): input is HeroDataResponse {
   return (

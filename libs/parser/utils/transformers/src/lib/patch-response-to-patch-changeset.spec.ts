@@ -1,9 +1,9 @@
-import { transformPatchResponseToPatchChangeset } from './patch-response-to-patch-changeset';
+import { transformPatchResponseToChanges } from './patch-response-to-patch-changeset';
 
 describe(`transformPatchResponseToPatchChangeset`, () => {
   it(`should transform date correctly`, () => {
     expect(
-      transformPatchResponseToPatchChangeset({
+      transformPatchResponseToChanges({
         patch_number: `7.01`,
         patch_timestamp: 1719817841,
       })

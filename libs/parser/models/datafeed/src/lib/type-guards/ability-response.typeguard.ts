@@ -9,7 +9,7 @@ import {
 import {
   AbilityDataItem,
   AbilityDataResponse,
-} from '../types/ability-data-response.interface';
+} from '../ability-data-response.interface';
 
 export function isAbilityDataResponse(
   input: unknown

@@ -7,7 +7,7 @@ async function parse() {
 
   const changes = await data.changes();
 
-  console.log(changes);
+  console.log(JSON.stringify(changes.get(`Snapfire`)));
 }
 
 parse();

@@ -1,4 +1,4 @@
-import { PatchesResponse } from '../types/patches-response.interface';
+import { PatchesResponse } from '@whatchangedfor-2/parser/models/datafeed';
 
 export function transformPatchesResponseToString(
   patches: PatchesResponse

@@ -1,5 +1,5 @@
-import { AbilityChanges } from '../types/patch-response.interface';
-import { transformAbility } from './transform-abilities';
+import { AbilityChanges } from '@whatchangedfor-2/parser/models/datafeed';
+import { createAbilityTransformer } from './transform-abilities';
 
 describe('transformAbilities', () => {
   const abilities: AbilityChanges[] = [
@@ -17,7 +17,7 @@ describe('transformAbilities', () => {
   ];
 
   it(`should transform abilities`, () => {
-    expect(transformAbility(abilities)).toEqual([
+    expect(createAbilityTransformer(abilities)).toEqual([
       {
         name: `1`,
         changes: ['This is a note', 'This is another note'],
@@ -30,10 +30,10 @@ describe('transformAbilities', () => {
   });
 
   it(`should return an empty array if no abilities are provided`, () => {
-    expect(transformAbility([])).toEqual([]);
+    expect(createAbilityTransformer([])).toEqual([]);
   });
 
   it(`should return an empty array if no abilities are provided`, () => {
-    expect(transformAbility(undefined)).toEqual([]);
+    expect(createAbilityTransformer(undefined)).toEqual([]);
   });
 });

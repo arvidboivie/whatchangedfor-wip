@@ -1,11 +1,13 @@
 import { Change } from '@whatchangedfor-2/changeset';
 
 import { transformNote } from './transform-notes';
-import { PatchResponse } from '../types/patch-response.interface';
-import { transformAbility } from './transform-abilities';
 
-export function transformPatchResponseToPatchChangeset(
-  patchResponse: PatchResponse
+import { AbilityTransformer } from './transform-abilities';
+import { PatchResponse } from '@whatchangedfor-2/parser/models/datafeed';
+
+export function transformPatchResponseToChanges(
+  patchResponse: PatchResponse,
+  abilityTransformer: AbilityTransformer
 ): Change[] {
   const heroChanges: Change[] =
     patchResponse.heroes?.map((hero) => ({
@@ -15,11 +17,11 @@ export function transformPatchResponseToPatchChangeset(
       type: `HERO` as const,
       talents: hero.talent_notes?.map(transformNote) ?? [],
       general: hero.hero_notes?.map(transformNote) ?? [],
-      abilities: hero.abilities?.map(transformAbility) ?? [],
+      abilities: hero.abilities?.map(abilityTransformer) ?? [],
       facets: hero.subsections?.map((subsection) => ({
         name: subsection.title,
         changes: subsection.general_notes?.map(transformNote) ?? [],
-        abilityChanges: subsection.abilities?.map(transformAbility) ?? [],
+        abilityChanges: subsection.abilities?.map(abilityTransformer) ?? [],
       })),
     })) ?? [];
 

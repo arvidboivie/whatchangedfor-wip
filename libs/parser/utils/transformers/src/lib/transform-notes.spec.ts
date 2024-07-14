@@ -1,4 +1,4 @@
-import { Note } from '../types/patch-response.interface';
+import { Note } from '@whatchangedfor-2/parser/models/datafeed';
 import { transformNote } from './transform-notes';
 
 describe(`transformNotes`, () => {

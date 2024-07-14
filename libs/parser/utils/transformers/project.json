@@ -1,0 +1,9 @@
+{
+  "name": "parser-utils-transformers",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/parser/utils/transformers/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project parser-utils-transformers --web",
+  "targets": {}
+}

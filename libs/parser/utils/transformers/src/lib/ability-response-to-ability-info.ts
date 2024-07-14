@@ -1,5 +1,5 @@
-import { AbilityInfo, AbilityInfoMap } from '@whatchangedfor-2/changeset';
-import { AbilityDataResponse } from '../types/ability-data-response.interface';
+import { AbilityInfoMap } from '@whatchangedfor-2/changeset';
+import { AbilityDataResponse } from '@whatchangedfor-2/parser/models/datafeed';
 
 export function transformAbilityResponseToAbilityInfo(
   input: AbilityDataResponse

@@ -1,3 +1,5 @@
 # TODO
 
-1. Add names to abilities
+~~\* Add names to abilities~~
+
+- Save changes to json files

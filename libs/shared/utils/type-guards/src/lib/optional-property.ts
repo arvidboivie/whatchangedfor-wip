@@ -1,3 +1,4 @@
+import { isObject } from './is-object';
 import { Typeguard } from './type-guard';
 
 export function optionalProperty<
@@ -8,9 +9,11 @@ export function optionalProperty<
   property: Property,
   typeguard: Typeguard<Type>
 ): Typeguard<InputType & { [P in Property]?: Type }> {
-  return (
-    input: InputType
-  ): input is InputType & { [P in Property]?: Type } => {
+  return (input: unknown): input is InputType & { [P in Property]?: Type } => {
+    if (!isObject(input)) {
+      return false;
+    }
+
     if (!(property in input)) {
       return true;
     }

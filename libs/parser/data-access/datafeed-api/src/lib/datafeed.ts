@@ -1,79 +1,59 @@
 import {
-  AbilityInfoMap,
-  Change,
-  HeroInfoMap,
-} from '@whatchangedfor-2/changeset';
-import {
-  isPatchesResponse,
-  isHeroDataResponse,
+  PatchesResponse,
+  HeroDataResponse,
+  AbilityDataResponse,
+  PatchResponse,
   isAbilityDataResponse,
+  isHeroDataResponse,
+  isPatchesResponse,
   isPatchResponse,
-} from './type-guards';
-import {
-  transformPatchesResponseToString,
-  transformHeroDataResponseToHeroInfo,
-  transformAbilityResponseToAbilityInfo,
-  transformPatchResponseToPatchChangeset,
-} from './transformers';
+} from '@whatchangedfor-2/parser/models/datafeed';
 import { Typeguard } from '@whatchangedfor-2/type-guards';
 
 export class Datafeed {
-  private static readonly BASE_URL = `https://www.dota2.com/datafeed`;
+  private readonly BASE_URL = `https://www.dota2.com/datafeed`;
 
-  private static cacheMap: Map<string, any> = new Map();
+  private cacheMap: Map<string, any> = new Map();
 
-  static {
-    this.heroes();
-    this.items();
-    this.abilities();
-  }
+  // static {
+  //   this.heroes();
+  //   this.items();
+  //   this.abilities();
+  // }
 
-  public static async patches(): Promise<string[]> {
-    const patches = await this.getCachedData(
+  public async patches(): Promise<PatchesResponse> {
+    return this.getCachedData(
       'patchnoteslist?language=english',
       isPatchesResponse
     );
-
-    return transformPatchesResponseToString(patches);
   }
 
-  public static async heroes(): Promise<HeroInfoMap> {
-    const heroes = await this.getCachedData(
-      'herolist?language=english',
-      isHeroDataResponse
-    );
-
-    return transformHeroDataResponseToHeroInfo(heroes);
+  public async heroes(): Promise<HeroDataResponse> {
+    return this.getCachedData('herolist?language=english', isHeroDataResponse);
   }
 
-  public static async items(): Promise<AbilityInfoMap> {
-    const itemResponse = await this.getCachedData(
+  public async items(): Promise<AbilityDataResponse> {
+    return this.getCachedData(
       'itemlist?language=english',
       isAbilityDataResponse
     );
-
-    return transformAbilityResponseToAbilityInfo(itemResponse);
   }
 
-  public static async abilities(): Promise<AbilityInfoMap> {
-    const abilityResponse = await this.getCachedData(
+  public async abilities(): Promise<AbilityDataResponse> {
+    return this.getCachedData(
       'abilitylist?language=english',
       isAbilityDataResponse
     );
-
-    return transformAbilityResponseToAbilityInfo(abilityResponse);
   }
 
-  public static async patch(version: string): Promise<Change[]> {
-    const patchResponse = await this.getCachedData(
+  public async patch(version: string): Promise<PatchResponse> {
+    return this.getCachedData(
       `patchnotes?version=${version}&language=english`,
       isPatchResponse
     );
-
-    return transformPatchResponseToPatchChangeset(patchResponse);
   }
 
-  private static async getCachedData<T>(
+  private async getCachedData<T>(
     resource: string,
     guard: Typeguard<T>
   ): Promise<T> {
@@ -93,7 +73,7 @@ export class Datafeed {
     return promise;
   }
 
-  private static async makeFetchHappen(resource: string): Promise<any> {
+  private async makeFetchHappen(resource: string): Promise<any> {
     console.log(`Fetching ${resource}`);
 
     const response = await fetch(`${this.BASE_URL}/${resource}`);

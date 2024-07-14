@@ -1,11 +1,4 @@
 import {
-  AbilityChanges,
-  HeroChanges,
-  Note,
-  PatchResponse,
-  Subsection,
-} from '../types/patch-response.interface';
-import {
   arrayOf,
   isNumber,
   isObject,
@@ -13,6 +6,13 @@ import {
   optionalProperty,
   property,
 } from '@whatchangedfor-2/type-guards';
+import {
+  AbilityChanges,
+  HeroChanges,
+  Note,
+  PatchResponse,
+  Subsection,
+} from '../..';
 
 export function isPatchResponse(input: unknown): input is PatchResponse {
   return (
