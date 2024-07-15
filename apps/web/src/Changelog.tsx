@@ -26,7 +26,7 @@ const Changelog: Component<{ name: string }> = ({ name }) => {
           <span>Error: {data.error()}</span>
         </Match>
         <Match when={data()}>
-          <For each={data()} fallback={<div>Loading list...</div>}>
+          <For each={data()?.reverse()} fallback={<div>Loading list...</div>}>
             {(item) => (
               <div>
                 <h2>
