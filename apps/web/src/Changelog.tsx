@@ -12,10 +12,9 @@ import {
 import SimpleChangeList from './SimpleChangeList';
 import AbilityChangeList from './AbilityChangeList';
 
-const Changelog: Component = () => {
-  const params = useParams();
+const Changelog: Component<{ name: string }> = ({ name }) => {
   // TODO: This isn't actually Change[], it's Change[] turned to JSON (i.e. not Dates but strings)
-  const [data] = createResource(`changes/${params.name}`, fetchJson<Change[]>);
+  const [data] = createResource(`changes/${name}`, fetchJson<Change[]>);
 
   return (
     <div>

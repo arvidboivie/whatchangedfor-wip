@@ -1,8 +1,14 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
-import { Route, Router } from '@solidjs/router';
+import { Route, Router, useNavigate } from '@solidjs/router';
 import Home from './Home';
-import Changelog from './Changelog';
+import { createResource, Match, Switch } from 'solid-js';
+import { fetchJson } from '@whatchangedfor-2/web/data-access/fetch-json';
+import { DataIndex } from '@whatchangedfor-2/shared-models-changeset';
+import { createOptions, Select } from '@thisbeyond/solid-select';
+import '@thisbeyond/solid-select/style.css';
+import ChangelogWildcardWrapper from './ChangelogWIldcardWrapper';
+import { autofocus } from '@solid-primitives/autofocus';
 
 const root = document.getElementById('root');
 
@@ -12,18 +18,38 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   );
 }
 
-const App = (props: any) => (
-  <>
-    <h1>Site Title</h1>
-    {props.children}
-  </>
-);
+const App = (props: any) => {
+  const [data] = createResource('index', fetchJson<DataIndex[]>);
+
+  const navigate = useNavigate();
+
+  return (
+    <>
+      <h1>Dota 2 Changelogs</h1>
+      <Switch>
+        <Match when={data.error}>
+          <span>Unable to load data</span>
+        </Match>
+        <Match when={data()}>
+          <Select
+            autofocus
+            {...createOptions(data.latest ?? [], { key: 'name' })}
+            onChange={(value: DataIndex) => {
+              navigate(`/${value.slug}`);
+            }}
+          />
+        </Match>
+      </Switch>
+      {props.children}
+    </>
+  );
+};
 
 render(
   () => (
     <Router root={App}>
       <Route path="/" component={Home} />
-      <Route path="/*name" component={Changelog} />
+      <Route path="/*name" component={ChangelogWildcardWrapper} />
     </Router>
   ),
   root!
