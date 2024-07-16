@@ -2943,26 +2943,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@solid-primitives/autofocus@npm:^0.0.111":
-  version: 0.0.111
-  resolution: "@solid-primitives/autofocus@npm:0.0.111"
-  dependencies:
-    "@solid-primitives/utils": "npm:^6.2.3"
-  peerDependencies:
-    solid-js: ^1.6.12
-  checksum: 10/1c224c7afe37794d6317cd122a8281d15025d7339032b589afe630760dca2212371716cf9b1735fbc191e12503fe36211033adc60c64e25c15ec096f7637f3e3
-  languageName: node
-  linkType: hard
-
-"@solid-primitives/utils@npm:^6.2.3":
-  version: 6.2.3
-  resolution: "@solid-primitives/utils@npm:6.2.3"
-  peerDependencies:
-    solid-js: ^1.6.12
-  checksum: 10/c5e624b642cabbb2d7bf610700f913dd7349e22f8763bbe70715001cf05ea8db25968d321dcfe771dc111f00f23b8231d6f52c19a5c8a256530276e32db240ee
-  languageName: node
-  linkType: hard
-
 "@solidjs/router@npm:^0.14.1":
   version: 0.14.1
   resolution: "@solidjs/router@npm:0.14.1"
@@ -3584,7 +3564,6 @@ __metadata:
     "@nx/web": "npm:19.3.2"
     "@nx/workspace": "npm:19.3.2"
     "@playwright/test": "npm:^1.36.0"
-    "@solid-primitives/autofocus": "npm:^0.0.111"
     "@solidjs/router": "npm:^0.14.1"
     "@swc-node/register": "npm:~1.9.1"
     "@swc/core": "npm:~1.5.7"

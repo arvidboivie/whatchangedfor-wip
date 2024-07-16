@@ -8,7 +8,6 @@ import { DataIndex } from '@whatchangedfor-2/shared-models-changeset';
 import { createOptions, Select } from '@thisbeyond/solid-select';
 import '@thisbeyond/solid-select/style.css';
 import ChangelogWildcardWrapper from './ChangelogWIldcardWrapper';
-import { autofocus } from '@solid-primitives/autofocus';
 
 const root = document.getElementById('root');
 
