@@ -1,14 +1,15 @@
 /* @refresh reload */
 import './style.css';
 import { render } from 'solid-js/web';
-import { Route, Router, useNavigate } from '@solidjs/router';
+import { Route, Router, useLocation, useNavigate } from '@solidjs/router';
 import Home from './Home';
-import { createResource, Match, Switch } from 'solid-js';
+import { createEffect, createResource, Match, Switch } from 'solid-js';
 import { fetchJson } from '@whatchangedfor-2/web/data-access/fetch-json';
 import { DataIndex } from '@whatchangedfor-2/shared-models-changeset';
 import { createOptions, Select } from '@thisbeyond/solid-select';
 import '@thisbeyond/solid-select/style.css';
 import ChangelogWildcardWrapper from './ChangelogWIldcardWrapper';
+import { createStore } from 'solid-js/store';
 
 const root = document.getElementById('root');
 
@@ -20,13 +21,21 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 
 const App = (props: any) => {
   const [data] = createResource('index', fetchJson<DataIndex[]>);
+  const [store, setStore] = createStore({
+    pageName: 'Dota 2 Changelogs',
+  });
+
+  createEffect(() => {
+    const location = useLocation();
+    setStore('pageName', location.pathname);
+  });
 
   const navigate = useNavigate();
 
   return (
     <>
       <div class="container">
-        <h1 class="subtitle">Dota 2 Changelogs</h1>
+        <p class="header">{store.pageName}</p>
 
         <div>
           <Switch>

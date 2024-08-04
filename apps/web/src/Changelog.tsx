@@ -10,7 +10,6 @@ import {
   type Component,
 } from 'solid-js';
 import SimpleChangeList from './SimpleChangeList';
-import AbilityChangeList from './AbilityChangeList';
 
 const Changelog: Component<{ name: string }> = ({ name }) => {
   // TODO: This isn't actually Change[], it's Change[] turned to JSON (i.e. not Dates but strings)
@@ -29,39 +28,62 @@ const Changelog: Component<{ name: string }> = ({ name }) => {
           <For each={data()?.reverse()} fallback={<div>Loading list...</div>}>
             {(item) => (
               <div x-name="Patch">
-                <h2 class="title">
+                <p class="title">
                   {item.patch} - {new Date(item.patchDate).toLocaleDateString()}
-                </h2>
-                <div x-name="Facets">
+                </p>
+                <div class="facets">
                   <Show when={item.facets}>
-                    <h3>Facets</h3>
+                    <p>Facets</p>
                     <For each={item.facets}>
                       {(facet) => (
-                        <div x-name="Single Facet">
-                          <h4>{facet.name}</h4>
-                          <SimpleChangeList
-                            changes={facet.changes}
-                            title={facet.name}
-                          />
-                          <AbilityChangeList abilities={facet.abilityChanges} />
+                        <div class="facet">
+                          <p>{facet.name}</p>
+                          <SimpleChangeList changes={facet.changes} />
+                          <Show
+                            when={
+                              facet.abilityChanges &&
+                              facet.abilityChanges.length > 0
+                            }
+                          >
+                            <For each={facet.abilityChanges}>
+                              {(change) => (
+                                <div>
+                                  <p>{change.name}</p>
+                                  <SimpleChangeList changes={change.changes} />
+                                </div>
+                              )}
+                            </For>
+                          </Show>
                         </div>
                       )}
                     </For>
                   </Show>
                 </div>
-                <div x-name="General Changes">
-                  <SimpleChangeList
-                    changes={item.general}
-                    title="General changes"
-                  />
-                </div>
-                <div x-name="Abilities">
-                  <h3>Abilities</h3>
-                  <AbilityChangeList abilities={item.abilities} />
-                </div>
-                <div x-name="Talents">
-                  <SimpleChangeList changes={item.talents} title="Talents" />
-                </div>
+                <Show when={item.general && item.general.length > 0}>
+                  <p>General Changes</p>
+                  <div class="general-changes">
+                    <SimpleChangeList changes={item.general} />
+                  </div>
+                </Show>
+                <Show when={item.abilities && item.abilities.length > 0}>
+                  <div class="abilities">
+                    <p>Abilities</p>
+                    <For each={item.abilities}>
+                      {(ability) => (
+                        <div>
+                          <p>{ability.name}</p>
+                          <SimpleChangeList changes={ability.changes} />
+                        </div>
+                      )}
+                    </For>
+                  </div>
+                </Show>
+                <Show when={item.talents && item.talents.length > 0}>
+                  <div class="talents">
+                    <p>Talents</p>
+                    <SimpleChangeList changes={item.talents} />
+                  </div>
+                </Show>
               </div>
             )}
           </For>
