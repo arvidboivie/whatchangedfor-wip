@@ -30,8 +30,8 @@ export interface Subsection {
   title: string;
   style: Style;
   // facet: string;
-  // facet_icon: string;
-  // facet_color: string;
+  facet_icon: string;
+  facet_color: string;
   general_notes?: Note[];
   abilities?: AbilityChanges[];
 }

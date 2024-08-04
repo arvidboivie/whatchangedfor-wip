@@ -20,6 +20,8 @@ export function transformPatchResponseToChanges(
       abilities: hero.abilities?.map(abilityTransformer) ?? [],
       facets: hero.subsections?.map((subsection) => ({
         name: subsection.title,
+        icon: subsection.facet_icon,
+        color: subsection.facet_color,
         changes: subsection.general_notes?.map(transformNote) ?? [],
         abilityChanges: subsection.abilities?.map(abilityTransformer) ?? [],
       })),
