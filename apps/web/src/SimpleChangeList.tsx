@@ -5,7 +5,7 @@ const SimpleChangeList: Component<{ changes?: string[]; title: string }> = (
 ) => {
   return (
     <Show when={props.changes && props.changes?.length > 0}>
-      <h3>{props.title}</h3>
+      <p>{props.title}</p>
       <ul>
         <For each={props.changes}>{(change) => <li>{change}</li>}</For>
       </ul>

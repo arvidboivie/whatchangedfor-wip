@@ -1,0 +1,33 @@
+:root {
+  --alpha: #9e6240;
+  --beta: #dea47e;
+  --gamma: #cd4631;
+  --delta: #f8f2dc;
+  --epsilon: #81adc8;
+}
+
+body {
+  background-color: var(--alpha);
+  font-family: 'Inconsolata', 'Courier New', monospace;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  color: var(--epsilon);
+}
+
+.subtitle {
+  color: var(--beta);
+}
+
+.text {
+  color: var(--beta);
+}

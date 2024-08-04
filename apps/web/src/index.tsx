@@ -1,4 +1,5 @@
 /* @refresh reload */
+import './style.css';
 import { render } from 'solid-js/web';
 import { Route, Router, useNavigate } from '@solidjs/router';
 import Home from './Home';
@@ -24,22 +25,27 @@ const App = (props: any) => {
 
   return (
     <>
-      <h1>Dota 2 Changelogs</h1>
-      <Switch>
-        <Match when={data.error}>
-          <span>Unable to load data</span>
-        </Match>
-        <Match when={data()}>
-          <Select
-            autofocus
-            {...createOptions(data.latest ?? [], { key: 'name' })}
-            onChange={(value: DataIndex) => {
-              navigate(`/${value.slug}`);
-            }}
-          />
-        </Match>
-      </Switch>
-      {props.children}
+      <div class="container">
+        <h1 class="subtitle">Dota 2 Changelogs</h1>
+
+        <div>
+          <Switch>
+            <Match when={data.error}>
+              <span>Unable to load data</span>
+            </Match>
+            <Match when={data()}>
+              <Select
+                autofocus
+                {...createOptions(data.latest ?? [], { key: 'name' })}
+                onChange={(value: DataIndex) => {
+                  navigate(`/${value.slug}`);
+                }}
+              />
+            </Match>
+          </Switch>
+        </div>
+        {props.children}
+      </div>
     </>
   );
 };
