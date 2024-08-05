@@ -1,16 +1,16 @@
 :root {
-  --alpha: #9e6240;
+  --alpha: #cb7a5c;
   --beta: #dea47e;
-  --gamma: #cd4631;
-  --delta: #f8f2dc;
-  --epsilon: #81adc8;
+  --gamma: #fba72a;
+  --delta: #d3d4d8;
+  --epsilon: #5785c1;
 
-  --first: #f06543ff;
-  --second: #e8e9ebff;
-  --third: #e0dfd5ff;
-  --fourth: #537d8dff;
-  --fifth: #53917e;
-  --sixth: #776885;
+  --first: #0a9f9d;
+  --second: #ceb175;
+  --third: #e54e21;
+  --fourth: #6c8645;
+  --fifth: #c18748;
+  --sixth: #dccb4e; /* Remove this, add separate section for innate ability */
 }
 
 body {
@@ -76,6 +76,7 @@ li {
 }
 
 .facet-title {
+  font-weight: bold;
   text-transform: uppercase;
 }
 
