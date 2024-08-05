@@ -5,9 +5,9 @@ const SimpleChangeList: Component<{ changes?: string[]; title?: string }> = (
 ) => {
   return (
     <Show when={props.changes && props.changes?.length > 0}>
-      <ul>
-        <For each={props.changes}>{(change) => <li>{change}</li>}</For>
-      </ul>
+      <For each={props.changes}>
+        {(change) => <p class="list-item">{change}</p>}
+      </For>
     </Show>
   );
 };

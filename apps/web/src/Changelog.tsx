@@ -27,17 +27,20 @@ const Changelog: Component<{ name: string }> = ({ name }) => {
         <Match when={data()}>
           <For each={data()?.reverse()} fallback={<div>Loading list...</div>}>
             {(item) => (
-              <div x-name="Patch">
+              <div class="patch">
                 <p class="title">
-                  {item.patch} - {new Date(item.patchDate).toLocaleDateString()}
+                  {item.patch}
+                  <span class="title-right">
+                    {new Date(item.patchDate).toLocaleDateString()}
+                  </span>
                 </p>
-                <div class="facets">
+                <div class="section">
                   <Show when={item.facets}>
-                    <p>Facets</p>
+                    <p class="subtitle">Facets</p>
                     <For each={item.facets}>
                       {(facet) => (
                         <div class="facet">
-                          <p>{facet.name}</p>
+                          <p class="facet-title">{facet.name}</p>
                           <SimpleChangeList changes={facet.changes} />
                           <Show
                             when={
@@ -46,10 +49,10 @@ const Changelog: Component<{ name: string }> = ({ name }) => {
                             }
                           >
                             <For each={facet.abilityChanges}>
-                              {(change) => (
-                                <div>
-                                  <p>{change.name}</p>
-                                  <SimpleChangeList changes={change.changes} />
+                              {(ability) => (
+                                <div class="ability">
+                                  <p class="ability-title">{ability.name}</p>
+                                  <SimpleChangeList changes={ability.changes} />
                                 </div>
                               )}
                             </For>
@@ -60,18 +63,18 @@ const Changelog: Component<{ name: string }> = ({ name }) => {
                   </Show>
                 </div>
                 <Show when={item.general && item.general.length > 0}>
-                  <p>General Changes</p>
-                  <div class="general-changes">
+                  <div class="section">
+                    <p class="subtitle">General Changes</p>
                     <SimpleChangeList changes={item.general} />
                   </div>
                 </Show>
                 <Show when={item.abilities && item.abilities.length > 0}>
-                  <div class="abilities">
-                    <p>Abilities</p>
+                  <div class="section">
+                    <p class="subtitle">Abilities</p>
                     <For each={item.abilities}>
                       {(ability) => (
-                        <div>
-                          <p>{ability.name}</p>
+                        <div class="ability">
+                          <p class="ability-title">{ability.name}</p>
                           <SimpleChangeList changes={ability.changes} />
                         </div>
                       )}
@@ -79,8 +82,8 @@ const Changelog: Component<{ name: string }> = ({ name }) => {
                   </div>
                 </Show>
                 <Show when={item.talents && item.talents.length > 0}>
-                  <div class="talents">
-                    <p>Talents</p>
+                  <div class="section">
+                    <p class="subtitle">Talents</p>
                     <SimpleChangeList changes={item.talents} />
                   </div>
                 </Show>

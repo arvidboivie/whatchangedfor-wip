@@ -5,17 +5,25 @@
   --delta: #f8f2dc;
   --epsilon: #81adc8;
 
-  --first: #edc9ffff;
-  --second: #fed4e7ff;
-  --third: #f8c6c3ff;
-  --fourth: #f2b79fff;
-  --fifth: #e5b769ff;
-  --sixth: #d8cc34ff;
+  --first: #f06543ff;
+  --second: #e8e9ebff;
+  --third: #e0dfd5ff;
+  --fourth: #537d8dff;
+  --fifth: #53917e;
+  --sixth: #776885;
 }
 
 body {
   background-color: var(--epsilon);
   font-family: 'Inconsolata', 'Courier New', monospace;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+li {
+  margin: 5px;
 }
 
 .container {
@@ -29,63 +37,105 @@ body {
 
 .header {
   color: var(--gamma);
+  font-size: x-large;
 }
 
 .title {
   color: var(--gamma);
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.title-right {
+  float: right;
+  color: var(--alpha);
+  font-weight: normal;
+}
+
+.subtitle {
+  color: var(--delta);
+  font-size: large;
+  font-weight: bold;
+}
+
+.patch {
+  margin: 3em 0;
+}
+
+.list-item {
+  margin-left: 1em;
+}
+
+.ability {
+  margin-left: 1em;
+  margin-bottom: 2em;
+}
+
+.ability-title {
+  font-weight: bold;
+}
+
+.facet-title {
+  text-transform: uppercase;
+}
+
+.ability .list-item {
+  display: list-item;
+  list-style-type: circle;
+  margin-left: 1.5em;
 }
 
 .facet {
   border-left: solid;
-  padding: 5px 5px 5px 20px;
+  padding: 5px 20px 5px 20px;
   border-width: 5px;
   margin-bottom: 5px;
 }
 
-.facets div:nth-child(1 of .facet) {
+.section div:nth-child(1 of .facet) {
   background: linear-gradient(
     to right,
-    var(--first),
-    color-mix(in srgb, var(--first), var(--alpha))
+    var(--first) 50%,
+    color-mix(in srgb, var(--first), transparent 30%)
   );
 }
 
-.facets div:nth-child(2 of .facet) {
+.section div:nth-child(2 of .facet) {
   background: linear-gradient(
     to right,
-    var(--second),
-    color-mix(in srgb, var(--second), var(--alpha))
+    var(--second) 50%,
+    color-mix(in srgb, var(--second), transparent 30%)
   );
 }
 
-.facets div:nth-child(3 of .facet) {
+.section div:nth-child(3 of .facet) {
   background: linear-gradient(
     to right,
-    var(--third),
-    color-mix(in srgb, var(--third), var(--alpha))
+    var(--third) 50%,
+    color-mix(in srgb, var(--third), transparent 30%)
   );
 }
 
-.facets div:nth-child(4 of .facet) {
+.section div:nth-child(4 of .facet) {
   background: linear-gradient(
     to right,
-    var(--fourth),
-    color-mix(in srgb, var(--fourth), var(--alpha))
+    var(--fourth) 50%,
+    color-mix(in srgb, var(--fourth), transparent 30%)
   );
 }
 
-.facets div:nth-child(5 of .facet) {
+.section div:nth-child(5 of .facet) {
   background: linear-gradient(
     to right,
-    var(--fifth),
-    color-mix(in srgb, var(--fifth), var(--alpha))
+    var(--fifth) 50%,
+    color-mix(in srgb, var(--fifth), transparent 30%)
   );
 }
 
-.facets div:nth-child(6 of .facet) {
+.section div:nth-child(6 of .facet) {
   background: linear-gradient(
     to right,
-    var(--sixth),
-    color-mix(in srgb, var(--sixth), var(--alpha))
+    var(--sixth) 50%,
+    color-mix(in srgb, var(--sixth), transparent 30%)
   );
 }
