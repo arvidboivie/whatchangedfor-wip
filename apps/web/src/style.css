@@ -98,6 +98,30 @@ li {
   margin-bottom: 5px;
 }
 
+.searchbox {
+  &.solid-select-container {
+    background-color: var(--delta);
+  }
+  .solid-select-control {
+    border-color: var(--delta);
+    &:focus-within {
+      outline-color: var(--gamma);
+    }
+  }
+  .solid-select-placeholder {
+    color: var(--delta);
+  }
+  .solid-select-option {
+    &:hover {
+      background-color: var(--delta);
+    }
+    &[data-focused='true'] {
+      background-color: var(--gamma);
+      color: var(--delta);
+    }
+  }
+}
+
 .section div:nth-child(1 of .facet) {
   background: linear-gradient(
     to right,

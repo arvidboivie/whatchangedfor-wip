@@ -45,6 +45,8 @@ const App = (props: any) => {
             </Match>
             <Match when={data()}>
               <Select
+                class="searchbox"
+                placeholder="Start typing..."
                 autofocus
                 {...createOptions(data.latest ?? [], { key: 'name' })}
                 onChange={(value: DataIndex) => {
