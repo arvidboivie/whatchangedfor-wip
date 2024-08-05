@@ -29,7 +29,9 @@ const Changelog: Component<{ name: string }> = ({ name }) => {
             {(item) => (
               <div class="patch">
                 <p class="title">
-                  {item.patch}
+                  <a href={`https://www.dota2.com/patches/${item.patch}`}>
+                    {item.patch}
+                  </a>
                   <span class="title-right">
                     {new Date(item.patchDate).toLocaleDateString()}
                   </span>
