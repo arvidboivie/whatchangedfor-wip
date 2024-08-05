@@ -6,16 +6,13 @@ const Home: Component = () => {
       <p class="title">Dota 2 change tracker</p>
       <div class="section">
         <p class="subtitle">Changelogs for individual heroes and items</p>
-        <div class="ability">
-          <p class="ability-title">Purpose</p>
-          <p class="list-item">Easily find what changed for an item or hero</p>
-          <p class="list-item">
-            Use the search box above to find what you're looking for
-          </p>
-          <p class="list-item">
-            Check out what changed for <a href="/pudge">/pudge</a>
-          </p>
-        </div>
+        <p class="list-item">Easily find what changed for an item or hero</p>
+        <p class="list-item">
+          Use the search box above to find what you're looking for
+        </p>
+        <p class="list-item">
+          Check out what changed for <a href="/pudge">/pudge</a>
+        </p>
       </div>
     </div>
   );
