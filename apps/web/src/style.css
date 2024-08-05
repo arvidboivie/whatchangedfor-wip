@@ -18,6 +18,11 @@ body {
   font-family: 'Inconsolata', 'Courier New', monospace;
 }
 
+a {
+  color: var(--gamma);
+  text-decoration: inherit;
+}
+
 ul {
   list-style-type: circle;
 }

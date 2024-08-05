@@ -21,6 +21,7 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 
 const App = (props: any) => {
   const [data] = createResource('index', fetchJson<DataIndex[]>);
+
   const [store, setStore] = createStore({
     pageName: 'Dota 2 Changelogs',
   });
