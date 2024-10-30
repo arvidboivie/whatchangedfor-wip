@@ -1,16 +1,16 @@
 :root {
   --alpha: #cb7a5c;
-  --beta: #dea47e;
-  --gamma: #fba72a;
-  --delta: #d3d4d8;
-  --epsilon: #5785c1;
+  --beta: #bbbbbb;
+  --gamma: #ed3b1c;
+  --delta: #fff;
+  --epsilon: #151618;
 
-  --first: #0a9f9d;
-  --second: #ceb175;
-  --third: #e54e21;
-  --fourth: #6c8645;
-  --fifth: #c18748;
-  --sixth: #dccb4e; /* Remove this, add separate section for innate ability */
+  --first: #727cb2;
+  --second: #9f3c3c;
+  --third: #565c61;
+  --fourth: #b57789;
+  --fifth: #9c70a4;
+  --sixth: #1c3143; /* Remove this, add separate section for innate ability */
 }
 
 body {
@@ -53,13 +53,13 @@ li {
 
 .title-right {
   float: right;
-  color: var(--alpha);
+  color: var(--beta);
   font-weight: normal;
 }
 
 .subtitle {
   color: var(--delta);
-  font-size: large;
+  font-size: x-large;
   font-weight: bold;
 }
 
@@ -68,11 +68,15 @@ li {
 }
 
 .list-item {
+  color: var(--beta);
   margin-left: 1em;
+  display: list-item;
+  list-style-type: circle;
 }
 
 .ability {
-  margin-left: 1em;
+  /* margin-left: 1em; */
+  color: var(--delta);
   margin-bottom: 2em;
 }
 
@@ -81,6 +85,7 @@ li {
 }
 
 .facet-title {
+  color: var(--delta);
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -88,7 +93,7 @@ li {
 .ability .list-item {
   display: list-item;
   list-style-type: circle;
-  margin-left: 1.5em;
+  /* margin-left: 1em; */
 }
 
 .facet {
